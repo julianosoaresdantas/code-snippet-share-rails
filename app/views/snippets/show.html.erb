@@ -1,0 +1,33 @@
+<h1><%= @snippet.title %></h1>
+
+<pre>
+  <code class="<%= @snippet.language %>">
+    <%= @snippet.code %>
+  </code>
+</pre>
+
+<p>
+  <strong>Language:</strong> <%= @snippet.language %>
+</p>
+
+<% if @snippet.description.present? %>
+  <p>
+    <strong>Description:</strong> <%= @snippet.description %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Privacy:</strong> <%= @snippet.privacy %>
+</p>
+
+<p>
+  <strong>Created by:</strong> <%= @snippet.user&.username %>
+</p>
+<% if @snippet.tags.any? %>
+  <p>
+    <strong>Tags:</strong> <%= @snippet.tags.map(&:name).join(', ') %>
+  </p>
+<% end %>
+<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Back to Snippets', snippets_path %> |
+<%= link_to 'Delete', snippet_path(@snippet), method: :delete, data: { confirm: 'Are you sure?' } %>
