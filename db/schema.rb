@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_12_211751) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_174121) do
   create_table "snippet_tags", force: :cascade do |t|
     t.integer "snippet_id", null: false
     t.integer "tag_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_211751) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tag_list"
     t.index ["created_at"], name: "index_snippets_on_created_at"
     t.index ["language"], name: "index_snippets_on_language"
     t.index ["privacy"], name: "index_snippets_on_privacy"
@@ -40,6 +41,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_211751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "test_models", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

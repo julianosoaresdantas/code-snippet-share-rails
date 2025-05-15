@@ -9,7 +9,8 @@ class SnippetsController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    @snippets = policy_scope(current_user, Snippet).order(created_at: :desc)
+    @snippets = policy_scope(Snippet).order(created_at: :desc)
+    @test_model = TestModel.first
   end
 
   def show
@@ -24,7 +25,7 @@ class SnippetsController < ApplicationController
     @snippet = current_user.snippets.new(snippet_params)
     authorize @snippet # Authorize before saving
     if @snippet.save
-      @snippet.save_tags
+      # @snippet.save_tags
       redirect_to @snippet, notice: "Snippet was successfully created."
     else
       render :new, status: :unprocessable_entity
