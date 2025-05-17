@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_14_174121) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_171133) do
   create_table "snippet_tags", force: :cascade do |t|
     t.integer "snippet_id", null: false
     t.integer "tag_id", null: false

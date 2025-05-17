@@ -1,0 +1,24 @@
+<h1>My Code Snippets</h1>
+
+<% if @my_snippets.empty? %>
+  <p>You haven't created any code snippets yet.</p>
+  <%= link_to 'New Snippet', new_snippet_path %>
+<% else %>
+  <% @my_snippets.each do |snippet| %>
+    <div class="snippet-item">
+      <h3><%= link_to snippet.title, snippet %></h3>
+      <p><strong>Language:</strong> <%= snippet.language %></p>
+      <p><strong>Privacy:</strong> <%= snippet.privacy %></p>
+      <small>Created at: <%= snippet.created_at.strftime('%Y-%m-%d %H:%M') %></small>
+      <% if policy(snippet).edit? %>
+        <%= link_to 'Edit', edit_snippet_path(snippet) %>
+      <% end %>
+      <% if policy(snippet).destroy? %>
+        <%= button_to 'Delete', snippet_path(snippet), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back to All Snippets', snippets_path %>
+<%= link_to 'New Snippet', new_snippet_path %>

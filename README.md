@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# code-snippet-share-rails
+A Ruby on Rails project that allows users to create, store, view, and share code snippets with syntax highlighting and privacy options.
+>>>>>>> 283be89732de095d9de391270e5a4bc43d16a9cd
