@@ -1,0 +1,35 @@
+name: Run Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    # **PASTE THE 'services' BLOCK HERE**
+    services:
+      postgres: # Or mysql, sqlite, depending on your test database
+        image: postgres:latest
+        ports: ['5432:5432']
+        options: >-
+          -e POSTGRES_USER=your_test_user
+          -e POSTGRES_PASSWORD=your_test_password
+          -e POSTGRES_DB=your_test_database
+          --health-cmd pg_isready
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3.0' # Or your project's Ruby version
+        bundler-cache: true
+
+    - name: Set up database  
+      run: |
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
+        # If you have seed data:
+        # bundle exec rails db:seed RAILS_ENV=test
+
+    - name: Run tests
+      run: bundle exec rails test
