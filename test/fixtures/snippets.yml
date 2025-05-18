@@ -1,0 +1,15 @@
+one:
+  code: MyText
+  language: MyString
+  title: MyString
+  description: MyText
+  privacy: MyString
+  user: one # Referring to the 'one' label in users.yml
+
+two:
+  code: MyText
+  language: MyString
+  title: MyString
+  description: MyText
+  privacy: MyString
+  user: two # Referring to the 'two' label in users.yml

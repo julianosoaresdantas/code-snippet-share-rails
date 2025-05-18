@@ -1,0 +1,7 @@
+tag_one:
+  name: unique_tag_one
+
+tag_two:
+  name: another_unique_tag
+
+# Add more tags as needed, ensuring unique names

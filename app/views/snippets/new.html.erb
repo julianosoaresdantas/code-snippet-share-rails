@@ -1,0 +1,46 @@
+<%= form_with model: @snippet do |form| %>
+  <% if @snippet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+
+      <ul>
+        <% @snippet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :language %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_area :code, rows: 10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :privacy %>
+<%= form.select :privacy, ["public", "private", "protected"] %>  </div>
+
+  <div class="field">
+    <%= form.label :tag_ids, "Tags" %>
+    <%= form.collection_select :tag_ids, @tags, :id, :name, {}, { multiple: true } %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

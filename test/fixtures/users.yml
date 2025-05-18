@@ -1,0 +1,9 @@
+one:
+  email: user_one_test@example.com
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  username: user_one_test
+
+two:
+  email: user_two_test@example.com
+  password_digest: <%= BCrypt::Password.create('another_secret') %>
+  username: user_two_test

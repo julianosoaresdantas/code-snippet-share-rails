@@ -1,0 +1,7 @@
+one:
+  snippet: one
+  tag: tag_one  # Use 'tag_one' to match tags.yml
+
+two:
+  snippet: two
+  tag: tag_two  # Use 'tag_two' to match tags.yml
