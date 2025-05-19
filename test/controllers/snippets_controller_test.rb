@@ -39,4 +39,4 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
 
   # Add tests for edit, update, and destroy if needed
 end
-// test comment
+# test comment
