@@ -15,17 +15,6 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create snippet" do
-    tag1 = Tag.create(name: "test_tag_1")
-    tag2 = Tag.create(name: "test_tag_2")
-
-    assert_difference("Snippet.count") do
-      post snippets_url, params: { snippet: { title: "My Snippet", language: "Ruby", code: "puts 'hello'", description: "A simple snippet", privacy: "public", tag_ids: [ tag1.id, tag2.id ] } }
-    end
-
-    assert_redirected_to snippet_path(Snippet.last)
-  end
-
   test "should get index" do
     get snippets_url
     assert_response :success
@@ -35,6 +24,17 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
     snippet = snippets(:one) # Assuming you have snippets in your fixtures
     get snippet_url(snippet)
     assert_response :success
+  end
+
+  test "should create snippet" do
+    tag1 = Tag.create(name: "unique_test_tag_1_for_create")
+    tag2 = Tag.create(name: "unique_test_tag_2_for_create")
+
+    assert_difference("Snippet.count") do
+      post snippets_url, params: { snippet: { title: "My Snippet", language: "Ruby", code: "puts 'hello'", description: "A simple snippet", privacy: "public", tag_ids: [ tag1.id, tag2.id ] } }
+    end
+
+    assert_redirected_to snippet_path(Snippet.last)
   end
 
   # Add tests for edit, update, and destroy if needed
