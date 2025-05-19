@@ -4,6 +4,7 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   fixtures :users
+  fixtures :snippets # Add this line
 
   def setup
     @user = users(:one)
@@ -21,7 +22,7 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    snippet = snippets(:one) # Assuming you have snippets in your fixtures
+    snippet = snippets(:one) # Now this should work
     get snippet_url(snippet)
     assert_response :success
   end
@@ -39,4 +40,3 @@ class SnippetsControllerTest < ActionDispatch::IntegrationTest
 
   # Add tests for edit, update, and destroy if needed
 end
-# test comment
